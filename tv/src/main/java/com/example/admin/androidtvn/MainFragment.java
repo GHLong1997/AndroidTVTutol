@@ -85,14 +85,19 @@ public class MainFragment extends BrowseFragment {
         mRowsAdapter = new ArrayObjectAdapter(new ListRowPresenter());
 
         /* GridItemPresenter */
-        HeaderItem gridItemPresenterHeader = new HeaderItem(0, "GridItemPresenter");
+        /* CardPresenter */
+        HeaderItem cardPresenterHeader = new HeaderItem(1, "CardPresenter");
+        CardPresenter cardPresenter = new CardPresenter();
+        ArrayObjectAdapter cardRowAdapter = new ArrayObjectAdapter(cardPresenter);
 
-        GridItemPresenter mGridPresenter = new GridItemPresenter();
-        ArrayObjectAdapter gridRowAdapter = new ArrayObjectAdapter(mGridPresenter);
-        gridRowAdapter.add("ITEM 1");
-        gridRowAdapter.add("ITEM 2");
-        gridRowAdapter.add("ITEM 3");
-        mRowsAdapter.add(new ListRow(gridItemPresenterHeader, gridRowAdapter));
+        for(int i=0; i<10; i++) {
+            Movie movie = new Movie();
+            movie.setTitle("title" + i);
+            movie.setStudio("studio" + i);
+            movie.setCardImageUrl("http://commondatastorage.googleapis.com/android-tv/Sample%20videos/Zeitgeist/Zeitgeist%202010_%20Year%20in%20Review/card.jpg");
+            cardRowAdapter.add(movie);
+        }
+        mRowsAdapter.add(new ListRow(cardPresenterHeader, cardRowAdapter));
 
         /* set */
         setAdapter(mRowsAdapter);
