@@ -9,7 +9,8 @@ public class Movie {
     private String title;
     private String studio;
     private String cardImageUrl;
- 
+    private String bgImageUrl;
+    private String description;
     public Movie() {
     }
  
@@ -37,12 +38,28 @@ public class Movie {
         this.studio = studio;
     }
 
+    public String getBackgroundImageUrl() {
+        return bgImageUrl;
+    }
+
+    public void setBackgroundImageUrl(String bgImageUrl) {
+        this.bgImageUrl = bgImageUrl;
+    }
+
     public String getCardImageUrl() {
         return cardImageUrl;
     }
 
     public void setCardImageUrl(String cardImageUrl) {
         this.cardImageUrl = cardImageUrl;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
  
     @Override

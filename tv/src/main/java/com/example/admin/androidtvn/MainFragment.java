@@ -66,7 +66,6 @@ public class MainFragment extends BrowseFragment {
         setupUIElements();
 
         loadRows();
-
         setupEventListeners();
 
     }
