@@ -94,6 +94,10 @@ public class MainFragment extends BrowseFragment {
                 RowPresenter.ViewHolder rowViewHolder, Row row) {
             // each time the item is selected, code inside here will be executed.
             if (item instanceof String) { // GridItemPresenter row
+                if (item == "ErrorFragment") {
+                    Intent intent = new Intent(getActivity(), ErrorActivity.class);
+                    startActivity(intent);
+                }
                 simpleBackgroundManager.clearBackground();
             } else if (item instanceof Movie) { // CardPresenter row
                 simpleBackgroundManager.startBackgroundTimer(((Movie) item).getCardImageUrl());
