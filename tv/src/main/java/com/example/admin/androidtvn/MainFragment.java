@@ -53,7 +53,7 @@ import java.util.TimerTask;
 
 public class MainFragment extends BrowseFragment {
     private static final String TAG = MainFragment.class.getSimpleName();
-
+    private static SimpleBackgroundManager simpleBackgroundManager = null;
     private ArrayObjectAdapter mRowsAdapter;
     private static final int GRID_ITEM_WIDTH = 300;
     private static final int GRID_ITEM_HEIGHT = 200;
@@ -62,10 +62,44 @@ public class MainFragment extends BrowseFragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         Log.i(TAG, "onActivityCreated");
         super.onActivityCreated(savedInstanceState);
-
+        simpleBackgroundManager = new SimpleBackgroundManager(getActivity());
         setupUIElements();
 
         loadRows();
+
+        setupEventListeners();
+
+    }
+
+    private void setupEventListeners() {
+        setOnItemViewClickedListener(new ItemViewClickedListener());
+        setOnItemViewSelectedListener(new ItemViewSelectedListener());
+    }
+
+    private final class ItemViewClickedListener implements OnItemViewClickedListener {
+        @Override
+        public void onItemClicked(Presenter.ViewHolder itemViewHolder, Object item,
+                RowPresenter.ViewHolder rowViewHolder, Row row) {
+            if (item instanceof String) { // GridItemPresenter row
+                simpleBackgroundManager.clearBackground();
+            } else if (item instanceof Movie) { // CardPresenter row
+                simpleBackgroundManager.startBackgroundTimer(((Movie) item).getCardImageUrl());
+            }
+        }
+    }
+
+    private final class ItemViewSelectedListener implements OnItemViewSelectedListener {
+
+        @Override
+        public void onItemSelected(Presenter.ViewHolder itemViewHolder, Object item,
+                RowPresenter.ViewHolder rowViewHolder, Row row) {
+            // each time the item is selected, code inside here will be executed.
+            if (item instanceof String) { // GridItemPresenter row
+                simpleBackgroundManager.clearBackground();
+            } else if (item instanceof Movie) { // CardPresenter row
+                simpleBackgroundManager.startBackgroundTimer(((Movie) item).getCardImageUrl());
+            }
+        }
     }
 
     private void setupUIElements() {
