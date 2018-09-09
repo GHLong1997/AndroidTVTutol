@@ -1,0 +1,22 @@
+<android.support.v17.leanback.widget.NonOverlappingLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:focusable="true"
+    android:clickable="true"
+    android:background="@drawable/authen_selected_bg">
+
+    <ImageView
+        android:id="@+id/header_icon"
+        android:layout_width="32dp"
+        android:layout_height="32dp"/>
+
+    <TextView
+        android:id="@+id/header_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:textColor="@drawable/txt_authen_selector"
+        android:focusable="true"/>
+
+</android.support.v17.leanback.widget.NonOverlappingLinearLayout>

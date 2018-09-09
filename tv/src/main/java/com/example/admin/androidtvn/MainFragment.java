@@ -29,6 +29,7 @@ import android.support.v17.leanback.widget.ListRowPresenter;
 import android.support.v17.leanback.widget.OnItemViewClickedListener;
 import android.support.v17.leanback.widget.OnItemViewSelectedListener;
 import android.support.v17.leanback.widget.Presenter;
+import android.support.v17.leanback.widget.PresenterSelector;
 import android.support.v17.leanback.widget.Row;
 import android.support.v17.leanback.widget.RowPresenter;
 import android.support.v4.app.ActivityOptionsCompat;
@@ -50,6 +51,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
+
+import static android.support.v17.leanback.widget.FocusHighlight.ZOOM_FACTOR_NONE;
 
 public class MainFragment extends BrowseFragment {
     private static final String TAG = MainFragment.class.getSimpleName();
@@ -74,24 +77,34 @@ public class MainFragment extends BrowseFragment {
         // over title
         setHeadersState(HEADERS_ENABLED);
         setHeadersTransitionOnBackEnabled(true);
-
         // set fastLane (or headers) background color
-        setBrandColor(getResources().getColor(R.color.fastlane_background));
+        setBrandColor(getResources().getColor(R.color.down_river));
         // set search icon color
         setSearchAffordanceColor(getResources().getColor(R.color.search_opaque));
+
+        setHeaderPresenterSelector(new PresenterSelector( ) {
+            @Override
+            public Presenter getPresenter(Object o) {
+                return new IconHeaderItemPresenter();
+            }
+        });
+
+
     }
 
     private void loadRows() {
-        mRowsAdapter = new ArrayObjectAdapter(new ListRowPresenter());
+        mRowsAdapter = new ArrayObjectAdapter(new ListRowPresenter(ZOOM_FACTOR_NONE));
 
         /* GridItemPresenter */
-        HeaderItem gridItemPresenterHeader = new HeaderItem(0, "GridItemPresenter");
+        IconHeaderItem gridItemPresenterHeader = new IconHeaderItem(0, "GridItemPresenter", R.drawable.android_header);
 
         GridItemPresenter mGridPresenter = new GridItemPresenter();
         ArrayObjectAdapter gridRowAdapter = new ArrayObjectAdapter(mGridPresenter);
         gridRowAdapter.add("ITEM 1");
         gridRowAdapter.add("ITEM 2");
         gridRowAdapter.add("ITEM 3");
+        mRowsAdapter.add(new ListRow(gridItemPresenterHeader, gridRowAdapter));
+        mRowsAdapter.add(new ListRow(gridItemPresenterHeader, gridRowAdapter));
         mRowsAdapter.add(new ListRow(gridItemPresenterHeader, gridRowAdapter));
 
         /* set */
@@ -118,6 +131,12 @@ public class MainFragment extends BrowseFragment {
 
         @Override
         public void onUnbindViewHolder(ViewHolder viewHolder) {
+
+        }
+
+        @Override
+        public void setOnClickListener(ViewHolder holder, View.OnClickListener listener) {
+            super.setOnClickListener(holder, listener);
 
         }
     }

@@ -5,4 +5,25 @@
     <color name="search_opaque">#ffaa3f</color>
     <color name="selected_background">#ffaa3f</color>
     <color name="default_background">#3d3d3d</color>
+    <color name="wild_sand">#F5F5F5</color>
+    <color name="razzmatazz">#D90E5D</color>
+    <color name="razzmatazz_alpha_20">#33D90E5D</color>
+    <color name="black_alpha_20">#33000000</color>
+    <color name="down_river">#091E42</color>
+    <color name="down_river_alpha_20">#33091E42</color>
+    <color name="down_river_alpha_60">#99091E42</color>
+    <color name="slate_gray">#7A869A</color>
+    <color name="mischka">#D9DCE2</color>
+    <color name="gray">#878787</color>
+    <color name="athens_gray">#F4F5F7</color>
+    <color name="sunset_orange">#FF4E4E</color>
+    <color name="lipstick">#BF064E</color>
+    <color name="gallery">#EEEEEE</color>
+    <color name="black_pearl">#050A24</color>
+    <color name="cornflower_blue">#66050A24</color>
+    <color name="fiord">#42526E</color>
+    <color name="white_alpha_10">#1AFFFFFF</color>
+    <color name="sunset_orange_alpha_30">#FF4E4E</color>
+    <color name="iron">#CACCCF</color>
+    <color name="lavender_blush">#FFEEF4</color>
 </resources>
